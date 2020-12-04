@@ -1,3 +1,4 @@
+# https://adventofcode.com/2020/day/3
 
 DAY = 3
 
