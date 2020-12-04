@@ -1,7 +1,7 @@
 # https://adventofcode.com/2020/day/4
 import re
 
-DAY=4
+DAY = 4
 
 x_test = '''ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
@@ -132,7 +132,7 @@ def run_part2(INPUT):
         else:
             validity.append(False)
 
-    print(validity)
+    # print(validity)
     return sum(validity)
 
 
