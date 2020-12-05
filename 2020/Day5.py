@@ -6,7 +6,7 @@ DAY = 5
 x_test = '''FBFBBFFRLR
 BFFFBBFRRR
 FFFBBBFRRR
-BBFFBBFRLL'''.split('\n')
+BBFFBBFRLL'''.split()
 
 y_test = 820
 
@@ -59,9 +59,7 @@ def main(INPUT):
 
 if __name__ == '__main__':
     f = open(f'./inputs/day{DAY}_input.txt')
-    INPUT = f.read().split('\n')
+    INPUT = f.readlines()
     f.close()
-
-    INPUT.remove('')
 
     main(INPUT)
