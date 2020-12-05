@@ -11,7 +11,7 @@ BBFFBBFRLL'''.split()
 y_test = 820
 
 def find_seat(string):
-    row_bin, col_bin =  re.match(r'^([F|B]{7})([L|R]{3})$', string).groups()
+    row_bin, col_bin =  re.match(r'^([FB]{7})([LR]{3})$', string).groups()
     row = int(row_bin.replace('F', '0').replace('B','1'), base=2)
     col = int(col_bin.replace('L', '0').replace('R','1'), base=2)
     return row, col
