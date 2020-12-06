@@ -1,3 +1,8 @@
+# My Additions
+.DS_Store
+/inputs/
+.idea/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
