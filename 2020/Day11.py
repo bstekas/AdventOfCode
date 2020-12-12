@@ -175,7 +175,7 @@ def seating_round2(seats, neighbor_map=None):
 
     else:
         # use list of neighbors in subsequent rounds
-        # saving this doesn't work for my input, but I have no idea why
+        # saving this suddenly does work for my input, but I have no idea why
         for i, j in neighbor_map.keys():
             neighbor_states = [get_seat_state(*ind, seats) for ind in neighbor_map[(i, j)]]
             if (seats[i][j] == '#') & (sum(neighbor_states) >= 5):
@@ -195,7 +195,7 @@ def run_part2(seats):
     while n < 1 or new_seats != last_seats:
         n += 1
         last_seats = copy.deepcopy(new_seats)
-        new_seats, neighbor_map = seating_round2(new_seats, neighbor_map=None)
+        new_seats, neighbor_map = seating_round2(new_seats, neighbor_map=neighbor_map)
 
         # print("\n".join(["".join(x) for x in new_seats]))
 
