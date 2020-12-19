@@ -1,45 +1,33 @@
 # https://adventofcode.com/2020/day/15
-from copy import deepcopy
 
 DAY = 15
 
 x_test = '''0,3,6'''
 y_test = 436
 
-y_test2 = None
+y_test2 = 175594
 
 
-# Part 1
-def grow_list(start, N=2020):
-    spoken = deepcopy(start)
-    spoken.reverse()
-    while len(spoken) < N:
-        if spoken[0] in spoken[1::]:
-            spoken.insert(0, spoken.index(spoken[0], 1))
+def list_lookup(start, N=2020):
+    print('Seed list:', start)
+    last_used = [-1]*N
+    spoken = []
+    for i, n in enumerate(start):
+        last_used[n] = i
+        spoken.append(n)
+
+    last_used[n] = -1
+    new_n = spoken.pop()
+    while i < N:
+        n = new_n
+        if last_used[n] == -1:
+            new_n = 0
         else:
-            spoken.insert(0, 0)
-    print(spoken)
-    return spoken[0]
+            new_n = i - last_used[n]
 
-
-# Part 2
-def grow_dict(start, N=30000000):
-    spoken = {}
-    seed = deepcopy(start)
-    n = seed.pop()
-    for k, v in enumerate(seed):
-        spoken[v] = k
-
-    i = len(seed)
-    while i < N-1:
-        if n in spoken.keys():
-            i_old = spoken[n]
-            spoken[n] = i
-            n = i - i_old
-        else:
-            spoken[n] = i
-            n = 0
-        i += 1
+        # spoken.append(n)
+        last_used[n] = i
+        i = i+1
 
     return n
 
@@ -58,18 +46,18 @@ def main(INPUT):
 
     print('\n----Part 1----')
     print('Test Results:')
-    test_function(grow_list(x_test), y_test)
+    test_function(list_lookup(x_test, N=2020), y_test)
 
     print('\nInput Results:')
-    test_function(grow_list(INPUT))
+    test_function(list_lookup(INPUT, N=2020))
 
     if y_test2:
         print('\n----Part 2----')
         print('Test Results:')
-        test_function(grow_dict(x_test), y_test2)
+        test_function(list_lookup(x_test, N=30000000), y_test2)
 
         print('\nInput Results:')
-        # test_function(grow_list(INPUT))
+        test_function(list_lookup(INPUT, N=30000000))
 
 
 if __name__ == '__main__':
